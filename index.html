@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método V&A – WhatsApp como Estratégia de Vendas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #00C853;
+    --verde-escuro: #00a846;
+    --verde-whats: #25D366;
+    --creme: #0D0D0D;
+    --marrom: #000000;
+    --dourado: #C9A84C;
+    --dourado-claro: #F5D87E;
+    --cinza-claro: #111111;
+    --texto: #F0F0F0;
+    --texto-leve: #9A9A9A;
+    --branco: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--texto);
+    background: var(--creme);
+    overflow-x: hidden;
+  }
+
+  /* ── BARRA TOPO ── */
+  .barra-topo {
+    background: var(--marrom);
+    color: var(--dourado-claro);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: pulseBar 3s ease-in-out infinite;
+  }
+  @keyframes pulseBar {
+    0%,100% { background: #000; }
+    50% { background: #111; }
+  }
+  .barra-topo span { color: var(--verde-whats); font-weight: 700; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--marrom);
+    position: relative;
+    overflow: hidden;
+    padding: 80px 20px 100px;
+    text-align: center;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,168,76,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 90% 100%, rgba(37,211,102,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--dourado-claro);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 900;
+    color: var(--branco);
+    line-height: 1.12;
+    max-width: 820px;
+    margin: 0 auto 20px;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--dourado-claro);
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(255,255,255,0.72);
+    max-width: 580px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+  .hero-sub strong { color: var(--verde-whats); }
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 44px;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+  .pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pill-icon { font-size: 1rem; }
+  .btn-hero {
+    display: inline-block;
+    background: var(--verde);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 18px 48px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    box-shadow: 0 0 40px rgba(0,200,83,0.35);
+    animation: fadeUp 0.7s 0.4s ease both;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, transparent 60%);
+  }
+  .btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 50px rgba(0,200,83,0.5);
+  }
+  .hero-garantia {
+    margin-top: 16px;
+    color: rgba(255,255,255,0.45);
+    font-size: 0.8rem;
+    animation: fadeUp 0.7s 0.5s ease both;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.7s 0.6s ease both;
+  }
+  .stat {
+    text-align: center;
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: 40px;
+  }
+  .stat:first-child { border-left: none; padding-left: 0; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dourado-claro);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── DOR ── */
+  .dor {
+    background: #F7F4EF;
+    padding: 80px 20px;
+  }
+  .container { max-width: 1060px; margin: 0 auto; }
+  .section-label {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--verde-escuro);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.2;
+    color: #1A1A1A;
+    margin-bottom: 18px;
+  }
+  .section-title em { color: var(--dourado); font-style: italic; }
+  .section-desc {
+    text-align: center;
+    font-size: 1.05rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 52px;
+    line-height: 1.65;
+  }
+  .dor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .dor-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .dor-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+  .dor-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .dor-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 6px; color: #1A1A1A; }
+  .dor-card p { font-size: 0.88rem; color: #666; line-height: 1.55; }
+
+  /* ── SOLUÇÃO / O QUE É ── */
+  .solucao {
+    background: var(--marrom);
+    padding: 90px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .solucao::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .solucao .section-label { color: var(--dourado-claro); }
+  .solucao .section-title { color: var(--branco); }
+  .solucao .section-title em { color: var(--dourado-claro); }
+  .solucao .section-desc { color: rgba(255,255,255,0.65); }
+  .solucao-destaque {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 20px;
+    padding: 40px 48px;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .solucao-destaque p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+  .solucao-destaque p:last-child { margin-bottom: 0; }
+  .solucao-destaque strong { color: var(--dourado-claro); font-weight: 600; }
+
+  /* ── PARA QUEM ── */
+  .para-quem {
+    background: #0a0a0a;
+    padding: 80px 20px;
+  }
+  .para-quem-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  .para-quem .section-label { color: var(--verde-whats); }
+  .para-quem .section-title { color: var(--branco); }
+  .para-quem .section-desc { color: rgba(255,255,255,0.55); }
+  @media (max-width: 680px) { .para-quem-cols { grid-template-columns: 1fr; } }
+  .pq-card {
+    background: #161616;
+    border-radius: 20px;
+    padding: 36px;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .pq-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pq-card.sim h3 { color: var(--verde-whats); }
+  .pq-card.nao h3 { color: #ff6b6b; }
+  .pq-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-size: 0.93rem;
+    color: var(--texto-leve);
+    line-height: 1.5;
+  }
+  .pq-check { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .pq-card.sim .pq-check { color: var(--verde); }
+  .pq-card.nao .pq-check { color: #E74C3C; }
+
+  /* ── MÓDULOS ── */
+  .modulos {
+    background: #F7F4EF;
+    padding: 90px 20px;
+  }
+  .modulos .section-label { color: var(--verde-escuro); }
+  .modulos .section-title { color: #1A1A1A; }
+  .modulos .section-desc { color: #666; }
+
+  /* ── CARROSSEL ── */
+  .carousel-wrapper {
+    position: relative;
+    padding: 0 56px;
+  }
+  .carousel-track-outer {
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .carousel-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+  .carousel-track .modulo-card {
+    flex: 0 0 calc((100% - 48px) / 3);
+    min-width: 0;
+  }
+  @media (max-width: 860px) {
+    .carousel-track .modulo-card { flex: 0 0 calc((100% - 24px) / 2); }
+  }
+  @media (max-width: 560px) {
+    .carousel-track .modulo-card { flex: 0 0 100%; }
+    .carousel-wrapper { padding: 0 44px; }
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(0,0,0,0.12);
+    background: #fff;
+    color: #1A1A1A;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+  }
+  .carousel-btn:hover { background: var(--verde); color: #fff; border-color: var(--verde); box-shadow: 0 6px 20px rgba(0,200,83,0.35); }
+  .carousel-btn:disabled { opacity: 0.3; cursor: default; }
+  .carousel-btn:disabled:hover { background: #fff; color: #1A1A1A; border-color: rgba(0,0,0,0.12); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+  .carousel-prev { left: 0; }
+  .carousel-next { right: 0; }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 28px;
+  }
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.18);
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    padding: 0;
+  }
+  .carousel-dot.active {
+    background: var(--verde);
+    width: 24px;
+    border-radius: 4px;
+  }
+  .modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .modulo-card {
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 28px 26px;
+    transition: all 0.25s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .modulo-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--verde);
+    transform: scaleY(0);
+    transition: transform 0.25s;
+    transform-origin: bottom;
+  }
+  .modulo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); border-color: rgba(0,200,83,0.3); }
+  .modulo-card:hover::before { transform: scaleY(1); }
+  .modulo-num {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--verde-escuro);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .modulo-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; color: #1A1A1A; line-height: 1.3; }
+  .modulo-card ul { list-style: none; }
+  .modulo-card ul li {
+    font-size: 0.85rem;
+    color: #666;
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
+    line-height: 1.45;
+  }
+  .modulo-card ul li:last-child { border-bottom: none; }
+
+  /* ── DIFERENCIAIS ── */
+  .diferenciais {
+    background: #0a0a0a;
+    padding: 80px 20px;
+  }
+  .diferenciais .section-label { color: var(--verde-whats); }
+  .diferenciais .section-title { color: var(--branco); }
+  .diferenciais .section-desc { color: rgba(255,255,255,0.55); }
+  .dif-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .dif-card {
+    text-align: center;
+    padding: 36px 24px;
+    background: #161616;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.2s;
+  }
+  .dif-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.5); }
+  .dif-icon { font-size: 2.4rem; margin-bottom: 14px; }
+  .dif-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--branco); }
+  .dif-card p { font-size: 0.88rem; color: var(--texto-leve); line-height: 1.55; }
+
+  /* ── AUTORAS ── */
+  .autoras {
+    background: var(--marrom);
+    padding: 90px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .autoras::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(37,211,102,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .autoras .section-label { color: var(--dourado-claro); }
+  .autoras .section-title { color: var(--branco); }
+  .autoras-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 680px) { .autoras-cols { grid-template-columns: 1fr; } }
+  .autora-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    padding: 36px;
+  }
+  .autora-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dourado-claro);
+    margin-bottom: 6px;
+  }
+  .autora-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--verde-whats);
+    margin-bottom: 18px;
+  }
+  .autora-card p {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+  }
+  .autora-card p strong { color: var(--dourado-claro); font-weight: 600; }
+
+  /* ── O QUE VOCÊ LEVA ── */
+  .leva {
+    background: #F7F4EF;
+    padding: 80px 20px;
+  }
+  .leva .section-label { color: var(--verde-escuro); }
+  .leva .section-title { color: #1A1A1A; }
+  .leva .section-desc { color: #666; }
+  .leva-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-bottom: 48px;
+  }
+  .leva-item {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 26px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    border: 1px solid rgba(0,0,0,0.07);
+    transition: transform 0.2s;
+  }
+  .leva-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+  .leva-check { font-size: 1.4rem; flex-shrink: 0; }
+  .leva-item h3 { font-size: 0.95rem; font-weight: 600; color: #1A1A1A; margin-bottom: 4px; }
+  .leva-item p { font-size: 0.85rem; color: #666; line-height: 1.5; }
+
+  /* ── PREÇO ── */
+  .preco {
+    background: #FFFFFF;
+    padding: 90px 20px;
+    text-align: center;
+  }
+  .preco .section-label { color: var(--verde-escuro); }
+  .preco .section-title { color: #1A1A1A; }
+  .preco-box {
+    max-width: 520px;
+    margin: 0 auto;
+    background: #F7F4EF;
+    border: 2px solid rgba(0,200,83,0.25);
+    border-radius: 28px;
+    padding: 52px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .preco-box::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--verde), var(--dourado));
+  }
+  .preco-de { text-decoration: line-through; color: #aaa; font-size: 1rem; margin-bottom: 6px; }
+  .preco-por { font-size: 0.85rem; color: var(--texto-leve); margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+  .preco-valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #1A1A1A;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .preco-valor span { font-size: 1.8rem; vertical-align: top; margin-top: 12px; display: inline-block; }
+  .preco-parcelado { color: var(--texto-leve); font-size: 0.9rem; margin-bottom: 36px; }
+  .btn-comprar {
+    display: block;
+    width: 100%;
+    background: var(--verde);
+    color: var(--branco);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 18px 28px;
+    border-radius: 10px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    box-shadow: 0 6px 30px rgba(0,200,83,0.3);
+    margin-bottom: 16px;
+  }
+  .btn-comprar:hover {
+    background: var(--verde-escuro);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 40px rgba(0,200,83,0.4);
+  }
+  .preco-seguro {
+    font-size: 0.78rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .preco-itens {
+    text-align: left;
+    margin: 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .preco-item { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--texto-leve); }
+  .preco-item-icon { color: var(--verde); font-weight: 700; }
+
+  /* ── GARANTIA ── */
+  .garantia {
+    background: var(--marrom);
+    padding: 70px 20px;
+    text-align: center;
+  }
+  .garantia-box {
+    max-width: 640px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 24px;
+    padding: 48px 40px;
+  }
+  .garantia-icon { font-size: 4rem; margin-bottom: 20px; }
+  .garantia-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dourado-claro);
+    margin-bottom: 14px;
+  }
+  .garantia-box p { color: rgba(255,255,255,0.72); font-size: 0.97rem; line-height: 1.7; }
+  .garantia-box strong { color: var(--verde-whats); }
+
+  /* ── FAQ ── */
+  .faq {
+    background: #F7F4EF;
+    padding: 80px 20px;
+  }
+  .faq .section-label { color: var(--verde-escuro); }
+  .faq .section-title { color: #1A1A1A; }
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    background: #FFFFFF;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(0,0,0,0.07);
+    overflow: hidden;
+  }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 24px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1A1A1A;
+    user-select: none;
+    gap: 12px;
+  }
+  .faq-q:hover { background: #F7F4EF; }
+  .faq-icon { font-size: 1.1rem; flex-shrink: 0; transition: transform 0.25s; }
+  .faq-a {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.25s;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 22px; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: var(--verde);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-final h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: var(--branco);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-final p { color: rgba(255,255,255,0.85); font-size: 1.05rem; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .btn-cta-final {
+    display: inline-block;
+    background: var(--branco);
+    color: var(--verde-escuro);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 18px 52px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.25s;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+  .btn-cta-final:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+  .cta-final-bottom {
+    margin-top: 18px;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    background: #1a1a1a;
+    padding: 32px 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+  }
+  footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+
+  /* ── ANIMAÇÕES ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── WHATSAPP FLUTUANTE ── */
+  .wpp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--verde-whats);
+    color: var(--branco);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.45);
+    z-index: 999;
+    transition: transform 0.2s;
+    animation: bounceIn 0.8s 1.5s ease both;
+  }
+  .wpp-float:hover { transform: scale(1.1); }
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    60% { transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 520px) {
+    .hero-stats { gap: 20px; }
+    .stat { padding-left: 20px; }
+    .preco-box { padding: 36px 24px; }
+    .preco-valor { font-size: 3.2rem; }
+    .solucao-destaque { padding: 28px 24px; }
+    .autora-card { padding: 28px; }
+    .garantia-box { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA TOPO -->
+<div class="barra-topo">
+  ⏳ Oferta por tempo limitado — <span>R$ 97,00</span> à vista ou 12x de R$ 10,03 &nbsp;·&nbsp; 🔒 Garantia de 7 dias
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">✦ Método V&A de Vendas</div>
+    <h1>Transforme seu WhatsApp numa<br><em>máquina de vendas</em> que fatura R$2.000+ por mês</h1>
+    <p class="hero-sub">
+      O método prático criado por quem vendeu <strong>mais de R$500 mil via WhatsApp</strong> —
+      sem anúncios pagos, sem algoritmo, usando apenas o celular que você já tem.
+    </p>
+    <div class="hero-pills">
+      <div class="pill"><span class="pill-icon">📱</span> Só o seu celular</div>
+      <div class="pill"><span class="pill-icon">🚫</span> Sem anúncios pagos</div>
+      <div class="pill"><span class="pill-icon">⚡</span> Acesso imediato</div>
+      <div class="pill"><span class="pill-icon">🎓</span> 8 módulos práticos</div>
+      <div class="pill"><span class="pill-icon">♾️</span> Acesso vitalício</div>
+    </div>
+    <a href="https://pay.kiwify.com.br/rPaVKK9" class="btn-hero">🟢 QUERO COMEÇAR AGORA — R$ 97,00</a>
+    <div class="hero-garantia">🔒 Garantia incondicional de 7 dias · Pagamento 100% seguro</div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">R$500k+</div>
+        <div class="stat-label">em vendas pelo WhatsApp</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7 anos</div>
+        <div class="stat-label">de experiência prática</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8</div>
+        <div class="stat-label">módulos aplicáveis</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">R$2k+</div>
+        <div class="stat-label">de renda extra possível</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOR -->
+<section class="dor">
+  <div class="container">
+    <div class="section-label">Você se identifica?</div>
+    <h2 class="section-title reveal">Parece familiar <em>alguma dessas situações?</em></h2>
+    <p class="section-desc reveal">Se você usa o WhatsApp para vender mas não está tendo os resultados que merece, provavelmente é por um desses motivos:</p>
+    <div class="dor-grid">
+      <div class="dor-card reveal">
+        <div class="dor-icon">😩</div>
+        <div>
+          <h3>Vendas travadas no "vou ver depois"</h3>
+          <p>Você manda a foto do produto, o cliente some e nunca mais responde. Conversas que deveriam virar venda ficam no vácuo.</p>
+        </div>
+      </div>
+      <div class="dor-card reveal">
+        <div class="dor-icon">📨</div>
+        <div>
+          <h3>WhatsApp desorganizado</h3>
+          <p>Mensagens por todo lado, clientes esquecidos, nenhum controle de quem comprou, quem está interessado, quem precisa de follow-up.</p>
+        </div>
+      </div>
+      <div class="dor-card reveal">
+        <div class="dor-icon">💸</div>
+        <div>
+          <h3>Gastando em anúncios sem retorno</h3>
+          <p>Você investe em tráfego pago mas não tem processo claro para converter. O dinheiro vai embora, os clientes não ficam.</p>
+        </div>
+      </div>
+      <div class="dor-card reveal">
+        <div class="dor-icon">🤖</div>
+        <div>
+          <h3>Parecendo robô ou invasivo</h3>
+          <p>Você não sabe como abordar sem ser chato. Ou usa scripts engessados que afastam em vez de atrair os clientes.</p>
+        </div>
+      </div>
+      <div class="dor-card reveal">
+        <div class="dor-icon">⏰</div>
+        <div>
+          <h3>Horas perdidas respondendo tudo</h3>
+          <p>O WhatsApp virou um fardo. Sem processo, sem automação, você perde tempo respondendo mensagens repetidas o dia todo.</p>
+        </div>
+      </div>
+      <div class="dor-card reveal">
+        <div class="dor-icon">😔</div>
+        <div>
+          <h3>Sente que poderia vender muito mais</h3>
+          <p>Você tem produto bom, tem audiência, tem vontade — mas falta método. Fica na sensação de que o resultado deveria ser melhor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUÇÃO -->
+<section class="solucao">
+  <div class="container">
+    <div class="section-label">A solução</div>
+    <h2 class="section-title reveal" style="margin-bottom:48px;">O <em>Método V&A</em> resolve isso de forma prática e direta</h2>
+    <div class="solucao-destaque reveal">
+      <p>O <strong>Método V&A de Vendas</strong> é um curso completo criado para transformar o seu WhatsApp em um ambiente organizado, profissional e altamente eficiente para vendas e relacionamento com clientes.</p>
+      <p>Desenvolvido com base em <strong>mais de 7 anos de experiência prática</strong> vendendo por diferentes nichos — moda, cosméticos, alimentos, serviços e produtos digitais — o método foi validado na vida real, não em teoria.</p>
+      <p>São <strong>8 módulos objetivos</strong> com aulas de 5 a 20 minutos que você aplica no dia seguinte. Sem enrolação, sem promessas vazias, sem atalhos duvidosos. Só o que funciona.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section class="para-quem">
+  <div class="container">
+    <div class="section-label">Público-alvo</div>
+    <h2 class="section-title reveal">Para quem é <em>este curso?</em></h2>
+    <p class="section-desc reveal">Seja honesto consigo. Veja se você se encaixa no perfil certo.</p>
+    <div class="para-quem-cols">
+      <div class="pq-card sim reveal">
+        <h3>✅ É para você se…</h3>
+        <div class="pq-item"><span class="pq-check">✓</span><span>Já vende pelo WhatsApp mas quer organizar e converter mais</span></div>
+        <div class="pq-item"><span class="pq-check">✓</span><span>É MEI, revendedor(a), autônomo(a) ou prestador de serviço</span></div>
+        <div class="pq-item"><span class="pq-check">✓</span><span>Vende produtos físicos (roupas, cosméticos, alimentos) ou digitais</span></div>
+        <div class="pq-item"><span class="pq-check">✓</span><span>Quer uma renda extra organizada com pouco investimento</span></div>
+        <div class="pq-item"><span class="pq-check">✓</span><span>Não tem verba para anúncios e precisa de estratégia orgânica</span></div>
+        <div class="pq-item"><span class="pq-check">✓</span><span>Quer profissionalizar o atendimento e fidelizar clientes</span></div>
+        <div class="pq-item"><span class="pq-check">✓</span><span>Está começando e quer um método claro para dar o primeiro passo</span></div>
+      </div>
+      <div class="pq-card nao reveal">
+        <h3>❌ Não é para você se…</h3>
+        <div class="pq-item"><span class="pq-check">✗</span><span>Procura dinheiro fácil sem colocar a mão na massa</span></div>
+        <div class="pq-item"><span class="pq-check">✗</span><span>Já tem grande e-commerce com equipe dedicada de marketing</span></div>
+        <div class="pq-item"><span class="pq-check">✗</span><span>Não está disposto a implementar o que aprender</span></div>
+        <div class="pq-item"><span class="pq-check">✗</span><span>Prefere aulas teóricas sem aplicação prática imediata</span></div>
+        <div class="pq-item"><span class="pq-check">✗</span><span>Busca "segredos" ou atalhos para enganar clientes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="modulos">
+  <div class="container">
+    <div class="section-label">Conteúdo</div>
+    <h2 class="section-title reveal">O que você vai <em>aprender</em></h2>
+    <p class="section-desc reveal">8 módulos práticos, aulas de 5 a 20 min, aplicáveis a partir do primeiro dia.</p>
+
+    <div class="carousel-wrapper reveal">
+      <!-- Setas -->
+      <button class="carousel-btn carousel-prev" aria-label="Anterior">&#8592;</button>
+      <button class="carousel-btn carousel-next" aria-label="Próximo">&#8594;</button>
+
+      <!-- Track -->
+      <div class="carousel-track-outer">
+        <div class="carousel-track" id="modulosTrack">
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 01</div>
+            <h3>Por que usar o WhatsApp para vender?</h3>
+            <ul>
+              <li>O WhatsApp como canal principal no Brasil</li>
+              <li>Mindset estratégico de vendas pelo chat</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 02</div>
+            <h3>Configurando o WhatsApp Business</h3>
+            <ul>
+              <li>Perfil profissional e catálogo funcional</li>
+              <li>Etiquetas e organização de contatos</li>
+              <li>Mensagens automáticas humanizadas</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 03</div>
+            <h3>Padronização no Atendimento</h3>
+            <ul>
+              <li>Scripts que ajudam sem engessar</li>
+              <li>Tom de voz consistente com todos os clientes</li>
+              <li>Como evitar respostas impulsivas</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 04</div>
+            <h3>Cadastro, Dados e Personalização</h3>
+            <ul>
+              <li>Quais dados registrar e como usar</li>
+              <li>Análise inteligente do cliente</li>
+              <li>Comunicação personalizada que gera conexão</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 05</div>
+            <h3>Estratégias de Vendas Práticas</h3>
+            <ul>
+              <li>Mensagens de recorrência e renovação</li>
+              <li>Lançamentos e calendário de conteúdo</li>
+              <li>Resgate de carrinho abandonado</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 06</div>
+            <h3>IA para Criação de Scripts</h3>
+            <ul>
+              <li>Como usar IA mantendo seu estilo</li>
+              <li>Geração de textos e roteiros de atendimento</li>
+              <li>Produtividade com IA de forma ética</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 07</div>
+            <h3>Pós-venda e Fidelização</h3>
+            <ul>
+              <li>Rotina para gerar recompra</li>
+              <li>Como coletar feedbacks e prova social</li>
+              <li>Construção de clientes fiéis, não avulsos</li>
+            </ul>
+          </div>
+
+          <div class="modulo-card">
+            <div class="modulo-num">Módulo 08</div>
+            <h3>Automações e Agentes de IA</h3>
+            <ul>
+              <li>Automação leve que não desumaniza</li>
+              <li>Principais ferramentas gratuitas do mercado</li>
+              <li>Agentes de IA aplicados ao WhatsApp</li>
+            </ul>
+          </div>
+
+        </div><!-- /track -->
+      </div><!-- /outer -->
+
+      <!-- Dots -->
+      <div class="carousel-dots" id="modulosDots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais">
+  <div class="container">
+    <div class="section-label">Por que o Método V&A</div>
+    <h2 class="section-title reveal">O que <em>torna este curso diferente</em></h2>
+    <p class="section-desc reveal">Comparado a tudo que você já viu sobre vendas pelo WhatsApp.</p>
+    <div class="dif-grid">
+      <div class="dif-card reveal">
+        <div class="dif-icon">🏆</div>
+        <h3>Feito por quem pratica</h3>
+        <p>Mais de R$500 mil em vendas reais pelo WhatsApp, em múltiplos nichos. Não é teoria de quem só ensina.</p>
+      </div>
+      <div class="dif-card reveal">
+        <div class="dif-icon">🎯</div>
+        <h3>Direto ao ponto</h3>
+        <p>Aulas de 5 a 20 minutos. Sem enrolação, sem conteúdo de enchimento. Cada módulo tem aplicação imediata.</p>
+      </div>
+      <div class="dif-card reveal">
+        <div class="dif-icon">💚</div>
+        <h3>Ético e sem manipulação</h3>
+        <p>Vendas com autenticidade. Sem técnicas de pressão, sem abordagem agressiva, sem ferir valores.</p>
+      </div>
+      <div class="dif-card reveal">
+        <div class="dif-icon">💰</div>
+        <h3>Acessível</h3>
+        <p>Por R$97 à vista você tem acesso vitalício a um método que pode gerar R$2.000+ por mês. ROI imediato.</p>
+      </div>
+      <div class="dif-card reveal">
+        <div class="dif-icon">🤝</div>
+        <h3>Suporte real</h3>
+        <p>Apoio pelo WhatsApp, lives semanais de dúvidas e suporte completo da plataforma. Você não fica sozinho.</p>
+      </div>
+      <div class="dif-card reveal">
+        <div class="dif-icon">🔄</div>
+        <h3>Acesso vitalício + atualizações</h3>
+        <p>Revise quando quiser e receba todas as atualizações do curso sem pagar nada adicional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTORAS -->
+<section class="autoras">
+  <div class="container">
+    <div class="section-label">Quem são elas</div>
+    <h2 class="section-title reveal" style="color:white;margin-bottom:48px;">Adriane & Viviane Cardoso —<br><em style="color:var(--dourado-claro);">V&A Consultoria Estratégica</em></h2>
+    <div class="autoras-cols">
+      <div class="autora-card reveal">
+        <h3>Adriane Cardoso</h3>
+        <div class="autora-role">Vendas · Atendimento · Estratégia Comercial</div>
+        <p>Fisioterapeuta de formação, há <strong>7 anos empreendendo</strong> com experiência prática em vendas pelo WhatsApp. Atuou em alimentação, moda, vestuário, serviços e infoprodutos. Acumulou <strong>mais de R$500 mil em vendas usando o WhatsApp como canal principal</strong>. Hoje atua com gestão de comunidades, estratégia comercial e implementação de processos digitais.</p>
+      </div>
+      <div class="autora-card reveal">
+        <h3>Viviane Cardoso</h3>
+        <div class="autora-role">Gestão · Processos · MBA em Pessoas</div>
+        <p>Administradora com <strong>MBA em Gestão de Pessoas</strong> e formação em Liderança Executiva. Com <strong>mais de 15 anos de experiência</strong> em empresas, startups e consultorias reorganizando processos, liderando equipes e estruturando operações. Especialidade: simplificar e tornar o dia a dia do negócio mais previsível e produtivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ LEVA -->
+<section class="leva">
+  <div class="container">
+    <div class="section-label">O que está incluso</div>
+    <h2 class="section-title reveal">Tudo que você recebe <em>ao entrar</em></h2>
+    <p class="section-desc reveal">Acesso imediato a todo o conteúdo assim que o pagamento for confirmado.</p>
+    <div class="leva-grid">
+      <div class="leva-item reveal">
+        <div class="leva-check">🎥</div>
+        <div>
+          <h3>8 módulos em vídeo</h3>
+          <p>Aulas curtas e práticas de 5 a 20 minutos, acessíveis pelo celular ou computador a qualquer hora.</p>
+        </div>
+      </div>
+      <div class="leva-item reveal">
+        <div class="leva-check">📄</div>
+        <div>
+          <h3>PDF exclusivo de acompanhamento</h3>
+          <p>Material complementar com os principais tópicos para revisar e aplicar durante o curso.</p>
+        </div>
+      </div>
+      <div class="leva-item reveal">
+        <div class="leva-check">✅</div>
+        <div>
+          <h3>Método validado na prática</h3>
+          <p>Todas as técnicas foram testadas em diferentes nichos e provaram funcionar no mundo real.</p>
+        </div>
+      </div>
+      <div class="leva-item reveal">
+        <div class="leva-check">💬</div>
+        <div>
+          <h3>Suporte direto pelo WhatsApp</h3>
+          <p>Apoio pontual sempre que precisar de orientações durante sua jornada de aprendizado.</p>
+        </div>
+      </div>
+      <div class="leva-item reveal">
+        <div class="leva-check">🏅</div>
+        <div>
+          <h3>Certificado de conclusão</h3>
+          <p>Ao concluir as aulas, receba automaticamente o certificado emitido pela plataforma Kiwify.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREÇO -->
+<section class="preco">
+  <div class="container">
+    <div class="section-label">Invista no seu negócio</div>
+    <h2 class="section-title reveal" style="margin-bottom:48px;">Escolha o seu <em>plano de acesso</em></h2>
+    <div class="preco-box reveal">
+      <div class="preco-de">De R$ 197,00</div>
+      <div class="preco-por">Apenas</div>
+      <div class="preco-valor"><span>R$</span> 97</div>
+      <div class="preco-parcelado">ou 12x de R$ 10,03 no cartão</div>
+
+      <div class="preco-itens">
+        <div class="preco-item"><span class="preco-item-icon">✓</span> 8 módulos em vídeo (acesso imediato)</div>
+        <div class="preco-item"><span class="preco-item-icon">✓</span> PDF exclusivo de acompanhamento</div>
+        <div class="preco-item"><span class="preco-item-icon">✓</span> Suporte pelo WhatsApp + lives semanais</div>
+        <div class="preco-item"><span class="preco-item-icon">✓</span> Acesso vitalício + atualizações gratuitas</div>
+        <div class="preco-item"><span class="preco-item-icon">✓</span> Certificado de conclusão</div>
+        <div class="preco-item"><span class="preco-item-icon">✓</span> Garantia incondicional de 7 dias</div>
+      </div>
+
+      <a href="https://pay.kiwify.com.br/rPaVKK9" class="btn-comprar">🟢 QUERO ACESSO AGORA</a>
+      <div class="preco-seguro">🔒 Pagamento 100% seguro · Kiwify · Cartão, Pix ou Boleto</div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="garantia">
+  <div class="container">
+    <div class="garantia-box reveal">
+      <div class="garantia-icon">🛡️</div>
+      <h2>Garantia Incondicional de 7 Dias</h2>
+      <p>
+        Se dentro de 7 dias você não sentir que o método vai transformar suas vendas pelo WhatsApp,
+        <strong>devolvo 100% do seu dinheiro, sem perguntas, sem burocracia.</strong>
+        Você não corre nenhum risco. O risco é nosso.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">Dúvidas frequentes</div>
+    <h2 class="section-title reveal" style="margin-bottom:40px;">Ainda tem <em>dúvidas?</em></h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">O que exatamente é o Método V&A de Vendas? <span class="faq-icon">+</span></div>
+        <div class="faq-a">É um curso prático criado para quem quer transformar conversas do WhatsApp em vendas. Você aprende desde a configuração do WhatsApp Business até o fechamento de vendas, fidelização e automações com IA. São 8 módulos em vídeo, acompanhados de material em PDF.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Por quanto tempo terei acesso ao curso? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Acesso vitalício. Você pode assistir quantas vezes quiser, revisar módulos sempre que precisar e receber todas as atualizações do curso sem pagar nada a mais por isso.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Qual a duração total do curso? <span class="faq-icon">+</span></div>
+        <div class="faq-a">O curso tem 8 módulos com videoaulas de 5 a 20 minutos cada. O formato é compacto e objetivo para que você possa estudar e já aplicar no mesmo dia, sem precisar bloquear horas do dia.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Terei suporte durante o curso? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sim! Você conta com suporte da plataforma Kiwify para questões de acesso, apoio direto pelo WhatsApp para orientações pontuais, e lives semanais para tirar dúvidas e aprender ainda mais. Você não fica sozinha(o).</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Para quem é este curso? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Para empreendedores, consultores, revendedores, prestadores de serviço, MEIs e quem quer fazer renda extra usando o WhatsApp. É especialmente indicado para quem vende produtos físicos ou digitais e quer organizar e profissionalizar o atendimento.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Recebo certificado ao final? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Sim! Ao concluir todas as aulas, você recebe automaticamente o certificado de conclusão emitido pela plataforma Kiwify. Ele fica disponível para download direto da sua área do aluno.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">E se eu não gostar do curso? <span class="faq-icon">+</span></div>
+        <div class="faq-a">Você tem 7 dias de garantia incondicional. Se não ficar satisfeito(a) por qualquer motivo, basta solicitar o reembolso dentro desse prazo e devolvemos 100% do valor pago, sem nenhuma pergunta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="container">
+    <h2 class="reveal">Pare de deixar dinheiro<br>na mesa todo mês</h2>
+    <p class="reveal">O WhatsApp já está no seu bolso. Agora é só aprender a usá-lo do jeito certo.</p>
+    <a href="https://pay.kiwify.com.br/rPaVKK9" class="btn-cta-final reveal">GARANTIR MINHA VAGA — R$ 97,00</a>
+    <div class="cta-final-bottom reveal">
+      🔒 Garantia de 7 dias · Acesso imediato · Pagamento seguro
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <p style="margin-bottom:8px;">© 2025 V&A Consultoria Estratégica · Todos os direitos reservados</p>
+  <p>Dúvidas? <a href="https://wa.me/31972593280">Fale com a equipe pelo WhatsApp</a></p>
+</footer>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/31972593280" class="wpp-float" target="_blank" title="Falar com a equipe">💬</a>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── CARROSSEL DE MÓDULOS ──
+  (function() {
+    const track = document.getElementById('modulosTrack');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const dotsContainer = document.getElementById('modulosDots');
+    if (!track) return;
+
+    const cards = Array.from(track.children);
+    let current = 0;
+
+    function visibleCount() {
+      const w = track.parentElement.offsetWidth;
+      if (w <= 560) return 1;
+      if (w <= 860) return 2;
+      return 3;
+    }
+
+    function totalSteps() {
+      return Math.ceil(cards.length / visibleCount());
+    }
+
+    // Build dots
+    function buildDots() {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSteps(); i++) {
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Módulo ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(d);
+      }
+    }
+
+    function goTo(index) {
+      const steps = totalSteps();
+      current = Math.max(0, Math.min(index, steps - 1));
+      const vc = visibleCount();
+      const cardW = cards[0].offsetWidth;
+      const gap = 24;
+      const offset = current * vc * (cardW + gap);
+      track.style.transform = `translateX(-${offset}px)`;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current >= steps - 1;
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Touch/swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) dx < 0 ? goTo(current + 1) : goTo(current - 1);
+    });
+
+    // Init & resize
+    buildDots();
+    goTo(0);
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { buildDots(); goTo(0); }, 150);
+    });
+  })();
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
