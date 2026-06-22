@@ -20,6 +20,11 @@
 
   fbq('init', '1288768683121820');
   fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    content_name: 'VA Estratégica',
+    content_type: 'product',
+    currency: 'BRL'
+  });
 </script>
 <!-- End Meta Pixel Code -->
 <style>
@@ -1370,6 +1375,80 @@
       if (!isOpen) item.classList.add('open');
     });
   });
+
+  // Meta Pixel checkout tracking and Kiwify parameter forwarding
+  (function() {
+    const KIWIFY_CHECKOUT_URL = 'https://pay.kiwify.com.br/rPaVKK9';
+    const TRACKING_PARAMS = [
+      'src',
+      'sck',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content',
+      's1',
+      's2',
+      's3',
+      'fbclid'
+    ];
+    const CHECKOUT_EVENT = {
+      content_name: 'VA Estratégica',
+      content_type: 'product',
+      currency: 'BRL'
+    };
+
+    const currentParams = new URLSearchParams(window.location.search);
+
+    function getKiwifyUrlWithTracking(originalHref) {
+      const checkoutUrl = new URL(originalHref, window.location.href);
+
+      TRACKING_PARAMS.forEach((param) => {
+        if (currentParams.has(param) && !checkoutUrl.searchParams.has(param)) {
+          checkoutUrl.searchParams.set(param, currentParams.get(param));
+        }
+      });
+
+      return checkoutUrl.toString();
+    }
+
+    document.querySelectorAll('a[href^="' + KIWIFY_CHECKOUT_URL + '"]').forEach((link) => {
+      link.href = getKiwifyUrlWithTracking(link.href);
+
+      link.addEventListener('click', (event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+          return;
+        }
+
+        const checkoutUrl = getKiwifyUrlWithTracking(link.href);
+        const opensInNewTab = link.target === '_blank';
+        let newTab = null;
+
+        event.preventDefault();
+
+        if (opensInNewTab) {
+          newTab = window.open('about:blank', '_blank');
+        }
+
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'InitiateCheckout', CHECKOUT_EVENT);
+        }
+
+        window.setTimeout(() => {
+          if (opensInNewTab) {
+            if (newTab) {
+              newTab.location.href = checkoutUrl;
+            } else {
+              window.open(checkoutUrl, '_blank');
+            }
+          } else {
+            window.location.href = checkoutUrl;
+          }
+        }, 350);
+      });
+    });
+  })();
+
 </script>
 </body>
 </html>
