@@ -7,6 +7,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', '1288768683121820');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', {
+    content_name: 'VA Estratégica',
+    content_type: 'product',
+    currency: 'BRL'
+  });
+</script>
+<!-- End Meta Pixel Code -->
 <style>
   :root {
     --verde: #00C853;
@@ -807,6 +827,10 @@
 </style>
 </head>
 <body>
+<noscript>
+  <img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1288768683121820&ev=PageView&noscript=1" />
+</noscript>
 
 <!-- BARRA TOPO -->
 <div class="barra-topo">
@@ -1339,6 +1363,84 @@
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => { buildDots(); goTo(0); }, 150);
+    });
+  })();
+
+
+  // Meta Pixel checkout tracking and URL parameter forwarding
+  (function() {
+    const checkoutUrl = 'https://pay.kiwify.com.br/rPaVKK9';
+    const trackingParams = [
+      'src',
+      'sck',
+      'utm_source',
+      'utm_medium',
+      'utm_campaign',
+      'utm_term',
+      'utm_content',
+      's1',
+      's2',
+      's3',
+      'fbclid'
+    ];
+    const checkoutTarget = new URL(checkoutUrl);
+
+    function isCheckoutLink(link) {
+      const url = new URL(link.href, window.location.href);
+      return url.origin === checkoutTarget.origin && url.pathname === checkoutTarget.pathname;
+    }
+
+    function addTrackingParams(href) {
+      const url = new URL(href, window.location.href);
+      const currentParams = new URLSearchParams(window.location.search);
+
+      trackingParams.forEach((param) => {
+        const value = currentParams.get(param);
+        if (value && !url.searchParams.has(param)) {
+          url.searchParams.set(param, value);
+        }
+      });
+
+      return url.toString();
+    }
+
+    function trackInitiateCheckout() {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'InitiateCheckout', {
+          content_name: 'VA Estratégica',
+          content_type: 'product',
+          currency: 'BRL'
+        });
+      }
+    }
+
+    document.querySelectorAll('a[href]').forEach((link) => {
+      if (isCheckoutLink(link)) {
+        link.href = addTrackingParams(link.href);
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      const link = event.target.closest('a[href]');
+      if (!link || !isCheckoutLink(link) || event.defaultPrevented) return;
+
+      const destination = addTrackingParams(link.href);
+      link.href = destination;
+      trackInitiateCheckout();
+
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+      event.preventDefault();
+      const target = link.getAttribute('target');
+
+      window.setTimeout(() => {
+        if (target && target !== '_self') {
+          window.open(destination, target);
+          return;
+        }
+
+        window.location.href = destination;
+      }, 350);
     });
   })();
 
